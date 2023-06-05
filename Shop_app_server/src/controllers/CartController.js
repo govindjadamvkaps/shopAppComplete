@@ -3,44 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import { ProductModel } from '../models/ProductModel.js'
 
 export async function saveCart(req, res) {
-    //     try {
-    //         console.log(req.body)
-    //         const { productId, userId, totalPrice, quantity } = req.body;
-    //         let cartEntry = await CartModel.findOne({ userId });
-
-    //         if (cartEntry) {
-    //             // Check if the productId already exists in the productId array
-    //             const existingProduct = cartEntry.productId.find((id) => id.equals(productId));
-
-    //             if (existingProduct) {
-    //                 // Product already exists, update quantity and totalPrice
-
-    //                 existingProduct.quantity += quantity;
-    //                 cartEntry.totalPrice += totalPrice;
-
-    //             } else {
-    //                 // Product does not exist, push the new productId
-    //                 cartEntry.productId.push(productId);
-    //                 cartEntry.totalPrice += totalPrice;
-    //                 cartEntry.quantity += quantity;
-    //             }
-
-    //             await cartEntry.save();
-    //         } else {
-    //          let cart  = CartModel(req.body)
-    //          const cartEntry = await cart.save()
-    //         }
-
-    //         // return { data: cartEntry, message: "Success", status: 200 };
-    //         res.status(StatusCodes.CREATED).json({data:cartEntry, message:"cart saved successfully", success:true})
-
-    //     } catch (err) {
-    //         console.log("error in saving cart", err);
-    //         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message:"error in saving cart"})
-    //         // return { message: err, status: 500 };
-    //     }
-
-    // }
+   
 
     try {
         // console.log("cart body", req.body)
@@ -119,7 +82,7 @@ export async function fetchCartByUserId(req, res) {
         // console.log(req.params.id)
         const cart = await CartModel.findOne({ userId: req.params.id }).populate('productId.pid')
 
-        console.log(cart)
+        // console.log(cart)
 
         res.status(StatusCodes.OK).json({ data: cart, message: "cart find successfully", message: true })
     } catch (error) {
@@ -202,24 +165,24 @@ export async function deleteAddToCart(req, res) {
     try {
         const userId = req.params.userId
         const pid = req.params.pid
-        console.log('userId', userId)
-        console.log("pid", pid)
+        // console.log('userId', userId)
+        // console.log("pid", pid)
         const cart = await CartModel.findOne({ userId: userId })
-        console.log("carrrt", cart)
+        // console.log("carrrt", cart)
 
         if (!cart) {
             return res.status(StatusCodes.OK).json({ message: "cart not found for deleting", success: false })
         }
-        console.log("cart.productid", cart.productId[0].pid)
-        console.log("pid=> pid", pid)
+        // console.log("cart.productid", cart.productId[0].pid)
+        // console.log("pid=> pid", pid)
         const itemIndex = cart.productId.findIndex(item => item.pid == pid);
-        console.log("item index", itemIndex)
+        // console.log("item index", itemIndex)
         if (itemIndex !== -1) {
             // Remove the item from the cart array
 
             const product = await ProductModel.findById(pid);
             const productPrice = product.pPrice * cart.productId[itemIndex].qty;
-            console.log("Prodcut cprice : ", productPrice)
+            // console.log("Prodcut cprice : ", productPrice)
             cart.totalPrice = cart.totalPrice - productPrice;
             cart.quantity -= cart.productId[itemIndex].qty;
             cart.productId.splice(itemIndex, 1);

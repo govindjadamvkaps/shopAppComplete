@@ -63,7 +63,8 @@ const Checkout = () => {
      console.log(amount)
       const res = await axios.post('http://localhost:5000/payment/create-checkout-session', {
         userId:userId,
-        amount:amount
+        amount:amount,
+        cartId:cartData
       // user: (JSON.parse(Cookies.get('user')))._id
       });
 

@@ -23,14 +23,14 @@ export async function postPayment(req, res) {
             success_url: "http://localhost:3000/checkout-success",
             cancel_url: "http://localhost:3000"
           });
-        console.log('stripe response', session)
-        console.log("response url", session.url)
+        // console.log('stripe response', session)
+        // console.log("response url", session.url)
 
           // store payment details in database
 
-          const { amount , userId} = req.body
+          const { amount , userId,cartId} = req.body
 
-          const payment = PaymentModel({amount, userId, transactionId:session.id})
+          const payment = PaymentModel({amount, userId, transactionId:session.id,cartId})
 
           const savedPaymentDetails = await payment.save()
           console.log("payment details", savedPaymentDetails)
