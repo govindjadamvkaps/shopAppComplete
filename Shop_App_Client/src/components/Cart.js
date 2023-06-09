@@ -17,7 +17,7 @@ const Cart = () => {
       // console.log("cart Dataaaaaaaaaa ==>", resp.data.data[0].productId)
       setCartData(resp.data.data.productId)
       setTotalPrice(resp.data.data)
-      console.log("dfsadfsafsa",resp.data.data)
+      // console.log("dfsadfsafsa",resp.data.data)
 
     } catch (error) {
       console.log("errror in fetching cart by user id", error)

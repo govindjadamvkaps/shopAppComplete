@@ -7,10 +7,11 @@ import cors from 'cors'
 import UserRouter from './src/routers/UserRouter.js'
 import CartRouter from './src/routers/CartRouter.js'
 import ContectRouter from './src/routers/ContactRouter.js'
-import CatergoryRouter from './src/routers/CategoryRouter.js'
+import CategoryRouter from './src/routers/CategoryRouter.js'
 import CheckOutRouter from './src/routers/CheckOutRouter.js'
 import Stripe from './src/routers/Stripe.js'
 import PaymentRouter from './src/routers/PaymentRouter.js'
+import AdminRouter from './src/routers/AdminRouter.js'
 
 const app = express()
 
@@ -20,8 +21,9 @@ app.use(UserRouter)
 app.use(ProductRouter)
 app.use(CartRouter)
 app.use(ContectRouter)
-app.use(CatergoryRouter)
+app.use(CategoryRouter)
 app.use(CheckOutRouter)
+app.use(AdminRouter)
 app.use('/payment', PaymentRouter)
 // app.use('/payment', Stripe)
 

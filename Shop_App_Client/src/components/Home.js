@@ -1,5 +1,6 @@
 import React from "react";
 import Category from "./Category";
+import { NavLink } from "react-bootstrap";
 
 const Home = () => {
   return (
@@ -20,9 +21,9 @@ const Home = () => {
                   fringilla.{" "}
                 </p>
                 <p>
-                  <a href="#" className="btn btn-sm btn-primary">
+                  <NavLink to="/shop" className="btn btn-sm btn-primary">
                     Shop Now
-                  </a>
+                  </NavLink>
                 </p>
               </div>
             </div>

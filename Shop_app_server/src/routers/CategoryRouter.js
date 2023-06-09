@@ -1,10 +1,11 @@
 import express from 'express'
-import { fetchCategory, fetchCategoryByObjId, saveCategory } from '../controllers/CategoryController.js'
+import { fetchCategory, fetchCategoryByObjId, findByIdAndDeleteCategory, saveCategory } from '../controllers/CategoryController.js'
 
-const CatergoryRouter = express.Router()
+const CategoryRouter = express.Router()
 
-CatergoryRouter.post("/categorys", saveCategory)
-CatergoryRouter.get("/categorys", fetchCategory)
-CatergoryRouter.get("/categorys/:id", fetchCategoryByObjId)
+CategoryRouter.post("/categorys", saveCategory)
+CategoryRouter.get("/categorys", fetchCategory)
+CategoryRouter.get("/categorys/:id", fetchCategoryByObjId)
+CategoryRouter.delete('/categorys/delete/:id',findByIdAndDeleteCategory )
 
-export default CatergoryRouter
+export default CategoryRouter

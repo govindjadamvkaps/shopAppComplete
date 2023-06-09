@@ -1,4 +1,4 @@
-import { fetchAllProduct , fetchProductByCategory, fetchProductById, productChildren, productMen, productWomen, saveProduuct } from "../controllers/ProductController.js";
+import { fetchAllProduct , fetchProductByCategory, fetchProductById, findByIdAndDelete, productChildren, productMen, productWomen, saveProduuct } from "../controllers/ProductController.js";
 import multer from "multer";
 import express from "express";
 
@@ -23,4 +23,6 @@ ProductRouter.get("/products/:category",fetchProductByCategory)
 ProductRouter.get('/products/category/men', productMen)
 ProductRouter.get('/products/category/women', productWomen)
 ProductRouter.get('/products/category/children', productChildren)
+ProductRouter.delete('/products/delete/:id',findByIdAndDelete)
+
 export default ProductRouter

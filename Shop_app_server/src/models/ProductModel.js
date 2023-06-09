@@ -7,12 +7,12 @@ const productSchema = new mongoose.Schema({
   pDescription: { type: String, required: true },
   noOfProduct: { type: Number },
   category:{type:String},
-  caregoryId: [
+  caregoryId: 
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
     },
-  ],
+  
 },{
     timestamps:true
 });

@@ -34,3 +34,13 @@ export const fetchCategoryByObjId = async(req,res)=>{
 } 
 
 
+export async function findByIdAndDeleteCategory(req,res){
+    try {
+        const product = await CategoryModel.findByIdAndDelete(req.params.id)
+        res.status(StatusCodes.NO_CONTENT).json({message:"product deleted successful"})
+
+    } catch (error) {
+        console.log('error in deleting product', error)
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message:"error in deleting product"})
+    }
+}

@@ -49,7 +49,7 @@ export async function loginUser(req,res){
       const password = req.body.password
   
       const user = await UserModel.findOne({email:email})
-  
+    
       const isPasswordMatch = bcrypt.compareSync(password,user.password)
   
       if (!email || !password) {
@@ -70,3 +70,14 @@ export async function loginUser(req,res){
     }
   }
   
+
+export async function findByIdAndDeleteUser(req,res){
+    try {
+        const user = await UserModel.findByIdAndDelete(req.params.id)
+        res.status(StatusCodes.NO_CONTENT).json({message:"user deleted successful"})
+
+    } catch (error) {
+        console.log('error in deleting product', error)
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message:"error in deleting product"})
+    }
+}

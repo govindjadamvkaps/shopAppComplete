@@ -25,8 +25,8 @@ const Checkout = () => {
       setProductData(resp.data.data.productId)
       setAmount(resp.data.data.totalPrice)
       
-      console.log("CartData response",resp.data.data)
-      console.log("product data response", resp.data.data.productId)
+      // console.log("CartData response",resp.data.data)
+      // console.log("product data response", resp.data.data.productId)
       
 
     } catch (error) {
